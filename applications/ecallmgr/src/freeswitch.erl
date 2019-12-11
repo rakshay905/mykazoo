@@ -14,6 +14,7 @@
 -export([version/1
         ,version/2
         ,release/1
+        ,status/1
         ]).
 -export([noevents/1]).
 -export([close/1]).
@@ -246,3 +247,7 @@ get_option(Node, Option) ->
            ,Option
            ],
     api(Node, 'erlang', kz_binary:join(Args, <<" ">>)).
+
+-spec status(atom()) -> fs_json_api_return().
+status(Node) ->
+    json_api(Node, <<"status">>).
